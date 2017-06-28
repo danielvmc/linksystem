@@ -44,6 +44,11 @@
                     <label for="website">Địa chỉ web giả: (Để trống nếu không dùng)</label>
                     <input type="text" class="form-control" name="website" id="website" value="{{ old('website') }}" placeholder="webtretho.vn">
                 </div>
+
+                <div class="form-group">
+                    <label for="app_id">ID App: (Nếu dùng link kiểu 2)</label>
+                    <input type="text" class="form-control" name="app_id" id="app_id" value="139134639949602" placeholder="139134639949602">
+                </div>
             </div>
 
             <div class="form-group">
@@ -65,8 +70,15 @@
          @if (session()->has('lin'))
             <div class="form-group">
                 <hr>
-                <button class="btn btn-primary" onclick="copyToClipboard('#result-lin')">Copy link chỉnh sửa</button><br>
+                <button class="btn btn-primary" onclick="copyToClipboard('#result-lin')">Copy link chỉnh sửa kiểu 1</button><br>
                 <a id="result-lin" href="{{ session()->get('lin') }}">{{ session()->get('lin') }}</a><br>
+            </div>
+        @endif
+        @if (session()->has('advanced'))
+            <div class="form-group">
+                <hr>
+                <button class="btn btn-primary" onclick="copyToClipboard('#result-advanced')">Copy link chỉnh sửa kiểu 2</button><br>
+                <a id="result-advanced" href="{{ session()->get('advanced') }}">{{ session()->get('advanced') }}</a><br>
             </div>
         @endif
 

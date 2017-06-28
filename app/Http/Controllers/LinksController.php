@@ -75,9 +75,11 @@ class LinksController extends Controller
         if (request()->has('title') || request()->has('description') || request()->has('image') || request()->has('website')) {
             $lin = 'https://www.facebook.com/sharer/sharer.php?u=' . $fullLink . '&title=' . request('title') . '&description=' . request('description') . '&picture=' . request('image') . '&caption=' . request('website');
 
+            $advanced = 'http://facebook.com/dialog/feed?_path=feed&app_id=' . request('app_id') . '&description=' . request('description') . '&picture=' . request('image') . '&redirect_uri=http%3A%2F%2Ffacebook.com&caption=' . request('website') . '&name=' . request('title') . '&link=' . $fullLink . '&to=123456';
+
             flash('Tạo link thành công!', 'success');
 
-            return back()->withInput(request()->all())->withLink($link)->withLin($lin);
+            return back()->withInput(request()->all())->withLink($link)->withLin($lin)->withAdvanced($advanced);
         } else {
             flash('Tạo link thành công!', 'success');
 
