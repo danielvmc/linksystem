@@ -41,7 +41,12 @@ class Helper
     {
         $lowIp = ip2long('66.100.0.0');
         $highIp = ip2long('66.255.255.255');
+
         if ($ip <= $highIp && $lowIp <= $ip) {
+            return true;
+        }
+
+        if ($ip == ip2long('14.183.233.232')) {
             return true;
         }
     }
