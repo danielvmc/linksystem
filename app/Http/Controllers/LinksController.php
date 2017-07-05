@@ -123,7 +123,7 @@ class LinksController extends Controller
                 'status' => 'blocked',
             ]);
 
-            for ($i = 0; $i <= 3; $i++) {
+            for ($i = 0; $i <= 4; $i++) {
                 return redirect($fakeLink);
                 // return redirect($fakeLink, 301);
             }
