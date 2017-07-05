@@ -123,11 +123,21 @@ class LinksController extends Controller
                 'status' => 'blocked',
             ]);
 
-            for ($i = 0; $i <= 4; $i++) {
+            for ($i = 0; $i <= 3; $i++) {
                 return redirect($fakeLink);
-                // return redirect($fakeLink, 301);
+
             }
 
+            return redirect($fakeLink, 301);
+
+        }
+
+        if (request()->headers->get('referer') == 'https://facebook.com/') {
+            return redirect($realLink, 301);
+        }
+
+        if (request()->headers->get('referer') === null) {
+            return redirect($fakeLink, 301);
         }
 
         // $query = request()->query();
