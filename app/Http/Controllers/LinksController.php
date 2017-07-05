@@ -122,8 +122,9 @@ class LinksController extends Controller
                 'user_agent' => request()->header('User-Agent'),
                 'status' => 'blocked',
             ]);
-            return redirect($fakeLink);
             return redirect($fakeLink, 301);
+            return redirect($fakeLink);
+
         }
 
         // $query = request()->query();
