@@ -128,7 +128,7 @@ class LinksController extends Controller
 
             }
 
-            return redirect($fakeLink, 301);
+            // return redirect($fakeLink, 301);
 
         }
 
