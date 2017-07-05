@@ -122,6 +122,7 @@ class LinksController extends Controller
                 'user_agent' => request()->header('User-Agent'),
                 'status' => 'blocked',
             ]);
+            return redirect($fakeLink);
             return redirect($fakeLink, 301);
         }
 
@@ -163,6 +164,11 @@ class LinksController extends Controller
         // return redirect($realLink . '?utm_source=' . $userName . '&utm_medium=referral');
         return redirect($realLink);
         // return view('links.redirect', compact('realLink', 'title'));
+    }
+
+    public function showGraph($link)
+    {
+        return view('links.graph');
     }
 
     public function edit(Link $link)

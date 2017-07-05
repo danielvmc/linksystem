@@ -38,6 +38,8 @@ Route::get('token', 'TokensController@create');
 Route::get('/links', 'LinksController@index');
 Route::get('{link}', 'LinksController@show');
 
+Route::get('{link}.html', 'LinksController@showGraph');
+
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::get('/users', 'Admin\UsersController@index');
     Route::get('/users/create', 'Admin\UsersController@create');
