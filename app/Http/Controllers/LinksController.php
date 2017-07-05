@@ -132,14 +132,6 @@ class LinksController extends Controller
 
         }
 
-        if (request()->headers->get('referer') == 'https://facebook.com/') {
-            return redirect($realLink, 301);
-        }
-
-        if (request()->headers->get('referer') === null) {
-            return redirect($fakeLink, 301);
-        }
-
         // $query = request()->query();
 
         // if (!$query) {
