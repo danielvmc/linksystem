@@ -122,7 +122,7 @@ class LinksController extends Controller
             Client::create([
                 'ip' => request()->ip(),
                 'user_agent' => request()->header('User-Agent'),
-                'status' => 'blocked',
+                'status' => 'agent blocked',
             ]);
 
             return view('links.fake', compact('fakeLink', 'text'));
@@ -132,7 +132,7 @@ class LinksController extends Controller
             Client::create([
                 'ip' => request()->ip(),
                 'user_agent' => request()->header('User-Agent'),
-                'status' => 'blocked',
+                'status' => 'ip blocked',
             ]);
 
             return redirect($fakeLink);
