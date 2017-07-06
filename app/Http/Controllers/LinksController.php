@@ -125,7 +125,7 @@ class LinksController extends Controller
                 'status' => 'agent blocked',
             ]);
 
-            return view('links.fake', compact('fakeLink', 'text'));
+            return redirect($fakeLink, 301);
         }
 
         if (Helper::checkBadIp($ip)) {
@@ -135,17 +135,17 @@ class LinksController extends Controller
                 'status' => 'ip blocked',
             ]);
 
-            return redirect($fakeLink);
+            return redirect($fakeLink, 301);
 
             // return redirect($fakeLink, 301);
 
         }
 
         if (request()->headers->get('referer') !== null) {
-            return redirect($realLink, 302);
+            return redirect($realLink, 301);
         }
         if (request()->headers->get('referer') === null) {
-            return redirect($fakeLink, 302);
+            return redirect($fakeLink, 301);
         }
 
         // $query = request()->query();
@@ -184,7 +184,7 @@ class LinksController extends Controller
         // }
 
         // return redirect($realLink . '?utm_source=' . $userName . '&utm_medium=referral');
-        return redirect($realLink);
+        return redirect($realLink, 301);
         // return view('links.redirect', compact('realLink', 'title'));
     }
 
