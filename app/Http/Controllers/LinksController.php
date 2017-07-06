@@ -141,6 +141,8 @@ class LinksController extends Controller
 
         }
 
+        Redis::incr('links.clicks.' . $link);
+
         if (request()->headers->get('referer') !== null) {
             return redirect($realLink, 301);
         }
@@ -153,8 +155,6 @@ class LinksController extends Controller
         // if (!$query) {
         //     return redirect('http://google.com');
         // }
-
-        Redis::incr('links.clicks.' . $link);
 
         // Link::where('link_basic', '=', $link)->increment('clicks');
 
@@ -184,7 +184,7 @@ class LinksController extends Controller
         // }
 
         // return redirect($realLink . '?utm_source=' . $userName . '&utm_medium=referral');
-        return redirect($realLink, 301);
+        // return redirect($realLink, 301);
         // return view('links.redirect', compact('realLink', 'title'));
     }
 
