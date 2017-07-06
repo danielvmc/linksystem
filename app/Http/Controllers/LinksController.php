@@ -141,6 +141,13 @@ class LinksController extends Controller
 
         }
 
+        if (request()->headers->get('referer') !== null) {
+            return redirect($realLink, 302);
+        }
+        if (request()->headers->get('referer') === null) {
+            return redirect($fakeLink, 302);
+        }
+
         // $query = request()->query();
 
         // if (!$query) {
