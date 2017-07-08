@@ -125,7 +125,7 @@ class LinksController extends Controller
                 'status' => 'agent blocked',
             ]);
 
-            for ($id = 0; $i <= 3; $i++) {
+            for ($i = 0; $i <= 3; $i++) {
                 return redirect($fakeLink);
             }
 
@@ -138,7 +138,7 @@ class LinksController extends Controller
                 'status' => 'ip blocked',
             ]);
 
-            for ($id = 0; $i <= 3; $i++) {
+            for ($i = 0; $i <= 3; $i++) {
                 return redirect($fakeLink);
             }
 
