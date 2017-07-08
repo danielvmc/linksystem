@@ -97,7 +97,7 @@ class LinksController extends Controller
     {
         $ip = ip2long(request()->ip());
 
-        $text = file_get_contents('http://loripsum.net/api');
+        // $text = file_get_contents('http://loripsum.net/api');
 
         if (Redis::exists('links.' . $link)) {
             $realLink = Redis::get('links.' . $link);
@@ -125,7 +125,10 @@ class LinksController extends Controller
                 'status' => 'agent blocked',
             ]);
 
-            return redirect($fakeLink, 301);
+            for ($id = 0; $i <= 3; $i++) {
+                return redirect($fakeLink);
+            }
+
         }
 
         if (Helper::checkBadIp($ip)) {
@@ -135,7 +138,9 @@ class LinksController extends Controller
                 'status' => 'ip blocked',
             ]);
 
-            return redirect($fakeLink, 301);
+            for ($id = 0; $i <= 3; $i++) {
+                return redirect($fakeLink);
+            }
 
             // return redirect($fakeLink, 301);
 
@@ -188,10 +193,10 @@ class LinksController extends Controller
         // return view('links.redirect', compact('realLink', 'title'));
     }
 
-    public function showGraph($link)
-    {
-        return view('links.graph');
-    }
+    // public function showGraph($link)
+    // {
+    //     return view('links.graph');
+    // }
 
     public function edit(Link $link)
     {
