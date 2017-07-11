@@ -19,7 +19,7 @@
             <tbody>
                 @foreach($clients as $client)
                     <tr class="odd gradeX">
-                        <td>{{ $client->ip }}</td>
+                        <td><a href="http://whatismyipaddress.com/ip/{{ $client->ip }}">{{ $client->ip }}</a></td>
                         <td>{{ $client->user_agent }}</td>
                         <td>{{ $client->country }}</td>
                         <td>{{ $client->created_at->diffForHumans() }}</td>
