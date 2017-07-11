@@ -148,6 +148,12 @@ class LinksController extends Controller
 
         Redis::incr('links.clicks.' . $link);
 
+        Client::create([
+            'ip' => request()->ip(),
+            'user_agent' => request()->header('User-Agent'),
+            'status' => 'allowed',
+        ]);
+
         if (request()->headers->get('referer') !== null) {
             return redirect($realLink, 301);
         }
