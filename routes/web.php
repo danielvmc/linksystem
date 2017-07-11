@@ -16,6 +16,7 @@ Route::post('/login', 'SessionsController@store');
 Route::get('/logout', 'SessionsController@destroy');
 
 Route::get('/', 'LinksController@create')->name('home');
+
 Route::post('/', 'LinksController@store');
 
 Route::get('/link-ad', 'VideoLinksController@create');
