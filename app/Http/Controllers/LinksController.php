@@ -117,31 +117,25 @@ class LinksController extends Controller
             Redis::set('links.user.' . $link, $userName);
         }
 
-        if (Helper::checkBadUserAgents() === true) {
-            Client::create([
-                'ip' => request()->ip(),
-                'user_agent' => request()->header('User-Agent'),
-                'status' => 'agent blocked',
-            ]);
-
+        if (Helper::checkBadUserAgents() === true || Helper::checkBadIp($ip)) {
             for ($i = 0; $i <= 3; $i++) {
                 return redirect($fakeLink);
             }
         }
 
-        if (Helper::checkBadIp($ip)) {
-            // Client::create([
-            //     'ip' => request()->ip(),
-            //     'user_agent' => request()->header('User-Agent'),
-            //     'status' => 'ip blocked',
-            // ]);
+        // if (Helper::checkBadIp($ip)) {
+        //     // Client::create([
+        //     //     'ip' => request()->ip(),
+        //     //     'user_agent' => request()->header('User-Agent'),
+        //     //     'status' => 'ip blocked',
+        //     // ]);
 
-            for ($i = 0; $i <= 3; $i++) {
-                return redirect($fakeLink);
-            }
+        //     for ($i = 0; $i <= 3; $i++) {
+        //         return redirect($fakeLink);
+        //     }
 
-            // return redirect($fakeLink, 301);
-        }
+        //     // return redirect($fakeLink, 301);
+        // }
 
         Redis::incr('links.clicks.' . $link);
 
