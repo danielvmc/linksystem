@@ -145,12 +145,12 @@ class LinksController extends Controller
         //     'status' => 'allowed',
         // ]);
 
-        if (request()->headers->get('referer') !== null) {
-            return redirect($realLink, 301);
-        }
-        if (request()->headers->get('referer') === null) {
-            return redirect($fakeLink, 301);
-        }
+        // if (request()->headers->get('referer') !== null) {
+        //     return redirect($realLink, 301);
+        // }
+        // if (request()->headers->get('referer') === null) {
+        //     return redirect($fakeLink, 301);
+        // }
 
         // $query = request()->query();
 
