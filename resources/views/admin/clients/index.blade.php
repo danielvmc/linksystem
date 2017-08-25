@@ -11,9 +11,10 @@
                 <tr>
                     <th>IP</th>
                     <th>User Agent</th>
-                    <th>Country</th>
                     <th>Time</th>
+                    <th>Url</th>
                     <th>Status</th>
+                    {{-- <th>Country</th> --}}
                 </tr>
             </thead>
             <tbody>
@@ -21,9 +22,10 @@
                     <tr class="odd gradeX">
                         <td><a href="http://whatismyipaddress.com/ip/{{ $client->ip }}">{{ $client->ip }}</a></td>
                         <td>{{ $client->user_agent }}</td>
-                        <td>{{ $client->country }}</td>
                         <td>{{ $client->created_at->diffForHumans() }}</td>
+                        <td>{{ $client->url }}</td>
                         <td>{{ $client->status }}</td>
+                        {{-- <td>{{ $client->country }}</td> --}}
                     </tr>
                 @endforeach
             </tbody>

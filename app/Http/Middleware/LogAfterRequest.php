@@ -22,11 +22,14 @@ class LogAfterRequest
 
     public function terminate($request, $response)
     {
+        $ip = request()->ip();
+
         if (!auth()->check()) {
             Client::create([
-                'ip' => request()->ip(),
+                'ip' => $ip,
                 'user_agent' => request()->header('User-Agent'),
-                'status' => Route::current()->uri,
+                'url' => Route::current()->uri,
+                'status' => 'allowed',
             ]);
         }
     }

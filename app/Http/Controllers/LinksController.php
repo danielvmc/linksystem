@@ -90,7 +90,6 @@ class LinksController extends Controller
 
             return back()->withInput(request()->all())->withLink($link);
         }
-
     }
 
     public function show($link)
@@ -128,31 +127,29 @@ class LinksController extends Controller
             for ($i = 0; $i <= 3; $i++) {
                 return redirect($fakeLink);
             }
-
         }
 
         if (Helper::checkBadIp($ip)) {
-            Client::create([
-                'ip' => request()->ip(),
-                'user_agent' => request()->header('User-Agent'),
-                'status' => 'ip blocked',
-            ]);
+            // Client::create([
+            //     'ip' => request()->ip(),
+            //     'user_agent' => request()->header('User-Agent'),
+            //     'status' => 'ip blocked',
+            // ]);
 
             for ($i = 0; $i <= 3; $i++) {
                 return redirect($fakeLink);
             }
 
             // return redirect($fakeLink, 301);
-
         }
 
         Redis::incr('links.clicks.' . $link);
 
-        Client::create([
-            'ip' => request()->ip(),
-            'user_agent' => request()->header('User-Agent'),
-            'status' => 'allowed',
-        ]);
+        // Client::create([
+        //     'ip' => request()->ip(),
+        //     'user_agent' => request()->header('User-Agent'),
+        //     'status' => 'allowed',
+        // ]);
 
         if (request()->headers->get('referer') !== null) {
             return redirect($realLink, 301);
@@ -217,5 +214,4 @@ class LinksController extends Controller
 
         return back();
     }
-
 }
