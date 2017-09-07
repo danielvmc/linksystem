@@ -49,7 +49,7 @@ class FakeLinksController extends Controller
                 'img' => $img,
                 'body' => '',
                 'slug' => $slug,
-                'link' => $domainName . '/fl/' . $slug,
+                'link' => 'http://' . $domainName . '/fl/' . $slug,
             ]);
         } elseif (request()->has('title')) {
             $title = request('title');
@@ -65,7 +65,7 @@ class FakeLinksController extends Controller
                 'img' => $img,
                 'body' => '',
                 'slug' => $slug,
-                'link' => $domainName . '/fl/' . $slug,
+                'link' => 'http://' . $domainName . '/fl/' . $slug,
             ]);
         }
 
