@@ -9,7 +9,7 @@
             {{ csrf_field() }}
 
             <div class="form-group">
-                <label for="fake_link">Link site gốc: (bình thường, dấu sét đều được, nếu bị lỗi thì điền thủ công ở dưới)</label>
+                <label for="fake_link">Link site gốc: (bình thường, dấu sét đều được, nếu bị LỖI thì XOÁ đi và điền thủ công ở dưới)</label>
                 <input type="text" class="form-control" name="fake_link" id="fake_link" value="{{ old('fake_link') }}">
             </div>
 
