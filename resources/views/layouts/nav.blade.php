@@ -40,6 +40,9 @@
                             <a href="/"><i class="fa fa-edit fa-fw"></i> Tạo Link Spam</a>
                         </li>
                         <li>
+                            <a href="/create-fake-link"><i class="fa fa-facebook fa-fw"></i> Tạo Link Giả</a>
+                        </li>
+                        <li>
                             <a href="/link-ad"><i class="fa fa-youtube fa-fw"></i> Tạo Link Ad</a>
                         </li>
                         <li>

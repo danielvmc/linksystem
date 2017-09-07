@@ -17,6 +17,11 @@ Route::get('/logout', 'SessionsController@destroy');
 
 Route::get('/', 'LinksController@create')->name('home');
 
+Route::get('/create-fake-link', 'FakeLinksController@create');
+Route::post('create-fake-link', 'FakeLinksController@store');
+
+Route::get('/fl/{slug}', 'FakeLinksController@show');
+
 Route::post('/', 'LinksController@store');
 
 Route::get('/link-ad', 'VideoLinksController@create');
@@ -61,6 +66,13 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
 
     Route::get('/domains/create', 'Admin\DomainsController@create');
     Route::post('/domains', 'Admin\DomainsController@store');
+
+    Route::get('/fake-domains', 'Admin\FakeDomainsController@index');
+
+    Route::get('/fake-domains/create', 'Admin\FakeDomainsController@create');
+    Route::post('/fake-domains', 'Admin\FakeDomainsController@store');
+
+    Route::delete('/fake-domains/{domain}', 'Admin\FakeDomainsController@destroy');
 
     Route::delete('/domains/{domain}', 'Admin\DomainsController@destroy');
 

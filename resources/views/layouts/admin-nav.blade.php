@@ -4,6 +4,7 @@
 
 <li>
     <a href="/admin/domains"><i class="fa fa-asterisk fa-fw"></i> Domains</span></a>
+    <a href="/admin/fake-domains"><i class="fa fa-asterisk fa-fw"></i> Fake Domains</span></a>
     {{-- <ul class="nav nav-second-level">
     <li>
         <a href="/admin/domains"><i class="fa fa-list fa-fw"></i> List domains</a>
