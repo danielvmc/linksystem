@@ -10,6 +10,11 @@ use App\FakeDomain;
 
 class FakeLinksController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['show']);
+    }
+
     public function create()
     {
         return view('fakelinks.create');
