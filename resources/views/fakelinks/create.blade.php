@@ -50,7 +50,7 @@
             <div class="form-group">
                 <hr>
                 <button class="btn btn-primary" onclick="copyToClipboard('#result-link')">Copy</button><br>
-                <a id="result-link" href="//{{ session()->get('link')->link }}">{{ session()->get('link')->link }}</a><br>
+                <a id="result-link" href="{{ session()->get('link')->link }}">{{ session()->get('link')->link }}</a><br>
             </div>
          @endif
     </div>
