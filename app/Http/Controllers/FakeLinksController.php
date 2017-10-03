@@ -17,7 +17,7 @@ class FakeLinksController extends Controller
 
     public function create()
     {
-        $domains = FakeDomain::all(['name']);
+        $domains = FakeDomain::latest()->get(['name']);
 
         return view('fakelinks.create', compact('domains'));
     }
