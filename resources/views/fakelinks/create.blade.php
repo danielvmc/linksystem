@@ -14,6 +14,15 @@
             </div>
 
             <div class="form-group">
+              <label for="fake_domain">Chọn website tuỳ vào nước spam:</label>
+              <select name="fake_domain" id="fake_domain" class="form-control">
+                @foreach ($domains as $domain)
+                  <option value="{{ $domain->name }}">{{ $domain->name }}</option>
+                @endforeach
+              </select>
+            </div>
+
+            <div class="form-group">
                 <label for="title">Tiêu đề:</label>
                 <input type="text" class="form-control" name="title" id="title" value="{{ old('title') }}" placeholder="Hết mụn trong 4 ngày">
             </div>

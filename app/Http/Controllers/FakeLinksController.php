@@ -17,13 +17,16 @@ class FakeLinksController extends Controller
 
     public function create()
     {
-        return view('fakelinks.create');
+        $domains = FakeDomain::all(['name']);
+
+        return view('fakelinks.create', compact('domains'));
     }
 
     public function store()
     {
-        $domain = FakeDomain::orderByRaw('RAND()')->get(['name']);
-        $domainName = $domain['0']->name;
+        // $domain = FakeDomain::orderByRaw('RAND()')->get(['name']);
+        // $domainName = $domain['0']->name;
+        $domain = request('fake_domain');
 
         if (request()->has('fake_link')) {
             $fakeLink = request('fake_link');
@@ -49,7 +52,7 @@ class FakeLinksController extends Controller
                 'img' => $img,
                 'body' => '',
                 'slug' => $slug,
-                'link' => 'http://' . $domainName . '/fl/' . $slug,
+                'link' => 'http://' . $domain . '/fl/' . $slug,
             ]);
         } elseif (request()->has('title')) {
             $title = request('title');
@@ -65,7 +68,7 @@ class FakeLinksController extends Controller
                 'img' => $img,
                 'body' => '',
                 'slug' => $slug,
-                'link' => 'http://' . $domainName . '/fl/' . $slug,
+                'link' => 'http://' . $domain . '/fl/' . $slug,
             ]);
         }
 
