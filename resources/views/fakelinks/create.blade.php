@@ -46,7 +46,7 @@
         <option value="jatim.tribunnews-indo.info">jatim.tribunnews-indo.info</option>
         <option value="blog.tribunnews-indo.info">blog.tribunnews-indo.info</option>
         <option value="jabar.tribunnews-indo.info">jabar.tribunnews-indo.info</option>
-        <option value="palemband.tribunnews-indo.info">palemband.tribunnews-indo.info</option>
+        <option value="palembang.tribunnews-indo.info">palembang.tribunnews-indo.info</option>
         <option value="wow.tribunnews-indo.info">wow.tribunnews-indo.info</option>
         <option value="medan.thetribunnews.info">medan.thetribunnews.info</option>
         <option value="jambi.thetribunnews.info">jambi.thetribunnews.info</option>
