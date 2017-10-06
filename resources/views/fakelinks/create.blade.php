@@ -21,6 +21,16 @@
                 @endforeach --}}
 
     <optgroup label="Việt Nam">
+        <option value="24gio.info">24gio.info</option>
+        <option value="daikinguyen.info">daikinguyen.info</option>
+        <option value="mothegioi.info">mothegioi.info</option>
+        <option value="ngoisaovn.info">ngoisaovn.info</option>
+        <option value="thanhnienviet.info">thanhnienviet.info</option>
+        <option value="tinnongtrongngay.info">tinnongtrongngay.info</option>
+        <option value="tintuchotvn.info">tintuchotvn.info</option>
+        <option value="tuoitrevn.info">tuoitrevn.info</option>
+        <option value="tuyentinvn.info">tuyentinvn.info</option>
+        <option value="vntinhot.info">vntinhot.info</option>
         <option value="tuoitrehot.info">tuoitrehot.info</option>
         <option value="gioitrevietnam.info">gioitrevietnam.info</option>
         <option value="danvietnam.info">danvietnam.info</option>
