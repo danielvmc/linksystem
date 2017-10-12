@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=100">
 <meta property="fb:app_id" content="1547540628876392">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel="amphtml" href="https://amp.vnexpress.net/">
-<link rel="canonical" href="https://vnexpress.net/">
+<link rel="amphtml" href="https://vnexpress.net/error3.html">
+<link rel="canonical" href="https://vnexpress.net/error3.html">
 <meta http-equiv="REFRESH" content="1800">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <link rel="dns-prefetch" href="//scdn.eclick.vn">

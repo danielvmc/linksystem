@@ -43,7 +43,7 @@
         <option value="congtin.info">congtin.info</option>
         <option value="docbaophapluat.info">docbaophapluat.info</option>
         <option value="tokhoe.info">tokhoe.info</option>
-        <option value="tamsueva.info">tamsueva.info</option>
+        {{-- <option value="tamsueva.info">tamsueva.info</option> --}}
     </optgroup>
     <optgroup label="Indonesia">
         <option value="medan.tribunnews-indo.info">medan.tribunnews-indo.info</option>
