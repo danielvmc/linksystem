@@ -5,6 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="IE=100">
 <meta property="fb:app_id" content="1547540628876392">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="amphtml" href="https://amp.vnexpress.net/">
+<link rel="canonical" href="https://vnexpress.net/">
 <meta http-equiv="REFRESH" content="1800">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <link rel="dns-prefetch" href="//scdn.eclick.vn">
@@ -22,6 +24,7 @@
 <meta name="tt_page_type" content="article">
 <meta name="tt_category_id" content="1001005">
 <meta name="tt_site_id" content="1000000">
+<!-- add meta for pvtt --><!-- end meta for pvtt --><meta property="og:url" itemprop="url" content="https://vnexpress.net/">
 <meta property="og:image" itemprop="thumbnailUrl" content="https://vcdn-vnexpress.vnecdn.net/2017/10/12/phia-bac-thiet-hai-the-nao-do-mua-lu-1507785671_500x300.jpg">
 <meta content="news" itemprop="genre" name="medium">
 <meta content="vi-VN" itemprop="inLanguage">
@@ -40,7 +43,7 @@
 <meta name="dc.rights.copyright" content="VnExpress">
 <meta name="dc.creator.name" content="VnExpress">
 <meta name="dc.creator.email" content="webmaster@vnexpress.net">
-<meta name="dc.identifier" content="https://vnexpress.net/infographics/thoi-su/phia-bac-thiet-hai-the-nao-do-mua-lu-3654767.html">
+<meta name="dc.identifier" content="https://vnexpress.net/">
 <meta name="copyright" content="VnExpress">
 <meta name="author" content="VnExpress">
 <meta name="dc.language" content="vi-VN">
@@ -53,7 +56,7 @@
 <meta name="revisit-after" content="days">
 <link rel="alternate" href="https://vnexpress.net" hreflang="vi-vn">
 <!-- Twitter Card --><meta name="twitter:card" value="summary">
-<meta name="twitter:url" content="https://vnexpress.net/infographics/thoi-su/phia-bac-thiet-hai-the-nao-do-mua-lu-3654767.html">
+<meta name="twitter:url" content="https://vnexpress.net/">
 <meta name="twitter:title" content="Phía Bắc thiệt hại thế nào do mưa lũ">
 <meta name="twitter:description" content="Từ ngày 9 đến 12/10, áp thấp nhiệt đới cùng không khí lạnh gây mưa rất to ở Bắc Bộ và Bắc Trung Bộ, nhiều nơi trên 400 mm.">
 <meta name="twitter:image" content="https://vcdn-vnexpress.vnecdn.net/2017/10/12/phia-bac-thiet-hai-the-nao-do-mua-lu-1507785671_500x300.jpg">
@@ -161,7 +164,7 @@
            </ul></section><!--End main_menu--><!-- Breadcrumb --><!--End Breadcrumb--><!-- CONTENT  --><section class="container infographics" data-component-modulejs="detail" data-component-page-type="infographics" data-component-page-config="[]"><header class="width_common"><span class="time left">Thứ năm, 12/10/2017<span class="drash"> | </span>12:21 GMT+7</span>
         <div class="block_share right">
     <a class="item_fb btn_facebook" rel="nofollow" href="javascript:;" title="Chia sẻ bài viết lên facebook"><i class="ic ic-facebook"></i></a>
-    <a class="item_twit btn_twitter get-link-bitly" rel="nofollow" href="javascript:;" id="twitter" data-url="https://vnexpress.net/infographics/thoi-su/phia-bac-thiet-hai-the-nao-do-mua-lu-3654767.html" title="Chia sẻ bài viết lên twitter"><i class="ic ic-twitter"></i></a>
+    <a class="item_twit btn_twitter get-link-bitly" rel="nofollow" href="javascript:;" id="twitter" data-url="https://vnexpress.net/" title="Chia sẻ bài viết lên twitter"><i class="ic ic-twitter"></i></a>
     <a class="item_google btn_google" rel="nofollow" href="javascript:;" title="Chia sẻ bài viết lên google+"><i class="ic ic-google-plus"></i></a>
     <a class="btn_print" href="javascript:;" onclick="common.printPopup();" title="Print" rel="nofollow"><i class="ic ic-print"></i></a>
     <a class="btn_email login_5 open-popup-link" rel="nofollow" href="#email-popup" id="email_content" title="Email" data-component-runtime="js" data-component-function="initMail" data-component-input="{}"><i class="ic ic-email"></i></a>
@@ -346,7 +349,7 @@
     </div>
     <div class="content_poup width_common">
         <form action="" name="send_mai" method="post">
-            <input type="hidden" id="url" name="url" value="https://vnexpress.net/infographics/thoi-su/phia-bac-thiet-hai-the-nao-do-mua-lu-3654767.html"><input type="hidden" id="article_title" name="article_title" value="Phía Bắc thiệt hại thế nào do mưa lũ"><ul class="form_element">
+            <input type="hidden" id="url" name="url" value="https://vnexpress.net/"><input type="hidden" id="article_title" name="article_title" value="Phía Bắc thiệt hại thế nào do mưa lũ"><ul class="form_element">
 <li class="width_common">
                     <input type="text" class="input_form" placeholder="Email người gửi" name="sender_email" id="sender_email"><div class="width_common txt_error" id="errorEmail"></div>
                 </li>
