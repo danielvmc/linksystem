@@ -103,7 +103,11 @@ class LinksController extends Controller
             $query = request()->query('id');
 
             if (!$query) {
-                return redirect(str_random(9999));
+                if (Helper::checkBadUserAgents() === true || Helper::checkBadIp($ip)) {
+                    return redirect('https://query.nytimes.com/search/sitesearch/?action=click&contentCollection&region=TopBar&WT.nav=searchWidget&module=SearchSubmit&pgtype=Homepage#/' . str_random(300));
+                } else {
+                    return redirect(str_random(5000));
+                }
             }
 
             $ip = ip2long(request()->ip());
@@ -129,8 +133,12 @@ class LinksController extends Controller
                 Redis::set('links.user.' . $link, $userName);
             }
 
-            if (Helper::checkBadUserAgents() === true || Helper::checkBadIp($ip)) {
+            if (Helper::checkBadUserAgents() === true) {
                 return redirect($fakeLink);
+            }
+
+            if (Helper::checkBadIp($ip)) {
+                return redirect('https://query.nytimes.com/search/sitesearch/?action=click&contentCollection&region=TopBar&WT.nav=searchWidget&module=SearchSubmit&pgtype=Homepage#/' . str_random(300));
             }
 
             // if (Helper::checkBadIp($ip)) {
