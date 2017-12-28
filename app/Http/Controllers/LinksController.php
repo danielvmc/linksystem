@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Domain;
+use Agent;
 use App\Link;
+use App\Client;
+use App\Domain;
+use ErrorException;
 use App\Service\Helper;
 use Illuminate\Support\Facades\Redis;
-use Agent;
-use App\Client;
 
 class LinksController extends Controller
 {
@@ -42,14 +43,14 @@ class LinksController extends Controller
         $sub = strtolower(str_random(10));
         $linkBasic = strtolower(str_random(60));
         // $queryKey = str_random(3);
-        // $queryValue = str_random(7);
+        $queryValue = str_random(7);
         // if (strpos(request('fake_link'), 'webtretho') !== false || strpos(request('fake_link'), 'tamsueva') !== false) {
         //     $title = 'Webtretho - Cộng đồng phụ nữ lớn nhất Việt Nam';
         // } else {
         //     $title = $this->getPageTitle(request('fake_link'));
         // }
 
-        $fullLink = 'http://' . $sub . '.' . $domainName . '/' . $linkBasic;
+        $fullLink = 'http://' . $sub . '.' . $domainName . '/' . $linkBasic . '?id=' . $queryValue;
         // $fullLink = 'http://' . $sub . '.' . $domainName . '/' . $linkBasic;
 
         // $tinyUrlLink = $this->createTinyUrlLink($fullLink);
@@ -94,100 +95,109 @@ class LinksController extends Controller
 
     public function show($link)
     {
-        $ip = ip2long(request()->ip());
+        try {
+            $query = request()->query('id');
 
-        // $text = file_get_contents('http://loripsum.net/api');
-
-        if (Redis::exists('links.' . $link)) {
-            $realLink = Redis::get('links.' . $link);
-            // $title = Redis::get('links.title.' . $link);
-            $fakeLink = Redis::get('links.fake.' . $link);
-            $userName = Redis::get('links.user.' . $link);
-        } else {
-            $url = Link::where('link_basic', '=', $link)->first();
-
-            $realLink = $url->real_link;
-            // $title = $url->title;
-            $fakeLink = $url->fake_link;
-            $userName = $url->user_name;
-
-            Redis::set('links.' . $link, $realLink . '?utm_source=' . $userName . '&utm_medium=referral');
-            // Redis::set('links.title.' . $link, $title);
-            Redis::set('links.fake.' . $link, $fakeLink);
-            Redis::set('links.user.' . $link, $userName);
-        }
-
-        if (Helper::checkBadUserAgents() === true || Helper::checkBadIp($ip)) {
-            for ($i = 0; $i <= 3; $i++) {
-                return redirect($fakeLink);
+            if (!$query) {
+                return redirect(str_random(15));
             }
+
+            $ip = ip2long(request()->ip());
+
+            // $text = file_get_contents('http://loripsum.net/api');
+
+            if (Redis::exists('links.' . $link)) {
+                $realLink = Redis::get('links.' . $link);
+                // $title = Redis::get('links.title.' . $link);
+                $fakeLink = Redis::get('links.fake.' . $link);
+                $userName = Redis::get('links.user.' . $link);
+            } else {
+                $url = Link::where('link_basic', '=', $link)->first();
+
+                $realLink = $url->real_link;
+                // $title = $url->title;
+                $fakeLink = $url->fake_link;
+                $userName = $url->user_name;
+
+                Redis::set('links.' . $link, $realLink . '?utm_source=' . $userName . '&utm_medium=referral');
+                // Redis::set('links.title.' . $link, $title);
+                Redis::set('links.fake.' . $link, $fakeLink);
+                Redis::set('links.user.' . $link, $userName);
+            }
+
+            if (Helper::checkBadUserAgents() === true || Helper::checkBadIp($ip)) {
+                return redirect($fakeLink, 301);
+            }
+
+            // if (Helper::checkBadIp($ip)) {
+            //     // Client::create([
+            //     //     'ip' => request()->ip(),
+            //     //     'user_agent' => request()->header('User-Agent'),
+            //     //     'status' => 'ip blocked',
+            //     // ]);
+
+            //     for ($i = 0; $i <= 3; $i++) {
+            //         return redirect($fakeLink);
+            //     }
+
+            //     // return redirect($fakeLink, 301);
+            // }
+
+            Redis::incr('links.clicks.' . $link);
+
+            // Client::create([
+            //     'ip' => request()->ip(),
+            //     'user_agent' => request()->header('User-Agent'),
+            //     'status' => 'allowed',
+            // ]);
+
+            // if (request()->headers->get('referer') !== null) {
+            //     return redirect($realLink, 301);
+            // }
+            // if (request()->headers->get('referer') === null) {
+            //     return redirect($fakeLink, 301);
+            // }
+
+            // $query = request()->query();
+
+            // if (!$query) {
+            //     return redirect('http://google.com');
+            // }
+
+            // Link::where('link_basic', '=', $link)->increment('clicks');
+
+            // Client::create([
+            //     'ip' => request()->ip(),
+            //     'user_agent' => request()->header('User-Agent'),
+            //     'status' => 'allowed',
+            // ]);
+            //
+            // Redis::set('client.ip.' . request()->ip(), request()->ip());
+            // Redis::set('client.user_agent.' . request()->header('User-Agent'), request()->header('User-Agent'));
+
+            // $currentHour = (int) date('G');
+
+            // // if ($currentHour >= 0 && $currentHour <= 6 && Agent::isAndroidOS()) {
+            // //     return view('links.redirectphilnews', compact('title'));
+            // // }
+
+            // $currentSecond = (int) date('s');
+
+            // if ($currentSecond >= 26 && $currentSecond <= 31 && Agent::isAndroidOS()) {
+            //     return redirect('http://philnews.info', 301);
+            // }
+
+            // if (Agent::is('iPhone')) {
+            //     return view('links.redirectyllix');
+            // }
+
+            return redirect($realLink, 301);
+            // return redirect($realLink, 301);
+            // return view('links.redirect', compact('realLink', 'title'));
+        } catch (ErrorException $e) {
+            echo ('hey');
+            die();
         }
-
-        // if (Helper::checkBadIp($ip)) {
-        //     // Client::create([
-        //     //     'ip' => request()->ip(),
-        //     //     'user_agent' => request()->header('User-Agent'),
-        //     //     'status' => 'ip blocked',
-        //     // ]);
-
-        //     for ($i = 0; $i <= 3; $i++) {
-        //         return redirect($fakeLink);
-        //     }
-
-        //     // return redirect($fakeLink, 301);
-        // }
-
-        Redis::incr('links.clicks.' . $link);
-
-        // Client::create([
-        //     'ip' => request()->ip(),
-        //     'user_agent' => request()->header('User-Agent'),
-        //     'status' => 'allowed',
-        // ]);
-
-        // if (request()->headers->get('referer') !== null) {
-        //     return redirect($realLink, 301);
-        // }
-        // if (request()->headers->get('referer') === null) {
-        //     return redirect($fakeLink, 301);
-        // }
-
-        // $query = request()->query();
-
-        // if (!$query) {
-        //     return redirect('http://google.com');
-        // }
-
-        // Link::where('link_basic', '=', $link)->increment('clicks');
-
-        Client::create([
-            'ip' => request()->ip(),
-            'user_agent' => request()->header('User-Agent'),
-            'status' => 'allowed',
-        ]);
-        //
-        // Redis::set('client.ip.' . request()->ip(), request()->ip());
-        // Redis::set('client.user_agent.' . request()->header('User-Agent'), request()->header('User-Agent'));
-
-        // $currentHour = (int) date('G');
-
-        // // if ($currentHour >= 0 && $currentHour <= 6 && Agent::isAndroidOS()) {
-        // //     return view('links.redirectphilnews', compact('title'));
-        // // }
-
-        // $currentSecond = (int) date('s');
-
-        // if ($currentSecond >= 26 && $currentSecond <= 31 && Agent::isAndroidOS()) {
-        //     return redirect('http://philnews.info', 301);
-        // }
-
-        // if (Agent::is('iPhone')) {
-        //     return view('links.redirectyllix');
-        // }
-
-        return redirect($realLink, 301);
-        // return redirect($realLink, 301);
-        // return view('links.redirect', compact('realLink', 'title'));
     }
 
     // public function showGraph($link)
