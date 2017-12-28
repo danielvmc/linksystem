@@ -96,11 +96,7 @@ class LinksController extends Controller
     public function show($link)
     {
         if (!Redis::exists('links.' . $link) && !Redis::get('links.' . $link)) {
-            if (Helper::checkBadUserAgents() === true || Helper::checkBadIp($ip)) {
-                return redirect('https://l.facebook.com/l.php?u=https%3A%2F%2Fquery.nytimes.com%2Fsearch%2Fsitesearch%2F%3Faction%3Dclick%26contentCollection%26region%3DTopBar%26WT.nav%3DsearchWidget%26module%3DSearchSubmit%26pgtype%3DHomepage%23%2F%C2%8B%C2%BEÃÃ%C2%82%C2%BD%C2%82»¶Ã©%C2%82Â%C2%82ÃÃ%C2%82%C2%82ÂÃÃÃ%C2%82%C2%82%C2%83ÂÃÃÂ%C2%82²Â%C2%82%C2%82ÂÂÂÂ%C2%82%C2%82Â%C2%82Ã´%C2%82Ã¢Â%C2%BCÂÃÂ¶´Ã±Â%C2%82ÃÃÂ%C2%82Â®%C2%82Ã»Â%C2%85®Â®«ÃÂÃÃÂÃÂ%C2%82Â%C2%BCÂ¢Â%C2%82¡%C2%82%C2%82ÃÃ¶¯ÃÃ%C2%83%C2%82²Â&h=ATP9LbARUotSWgs5GzxrH5wQauMfySxRU3y_uDinEloHWwh1LPJtAtV5On-7k9IsWsUbmjITNwQbg03GICMaTWsE0JuDGzSL-ghi8GoF11Yv9NTo3yZ-tYgLk7V0fOYBkfQMiVgWRzAUURcdl1U' . str_random(1000), 301);
-            } else {
-                return redirect(str_random(5000));
-            }
+            return redirect(str_random(5000));
         }
 
         try {
